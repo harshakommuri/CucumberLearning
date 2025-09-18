@@ -20,12 +20,18 @@
     	<scope>test</scope>
 	</dependency>
 	
-	<dependency>
-    <groupId>io.cucumber</groupId>
-    <artifactId>cucumber-java</artifactId>
-    <version>7.28.2</version>
-</dependency>
-  </dependencies>
+  <dependency>
+			<groupId>io.cucumber</groupId>
+			<artifactId>cucumber-java</artifactId>
+			<version>4.2.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>io.cucumber</groupId>
+			<artifactId>cucumber-testng</artifactId>
+			<version>4.2.2</version>
+		</dependency>
+		</dependencies>
   <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
 	<!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-java -->
 </project>
