@@ -3,7 +3,9 @@ package steps;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
 
+import cucumber.api.java.en.But;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -42,5 +44,21 @@ public class LoginSteps {
 		System.out.println("Logged in successfully");
 		System.out.println(driver.getTitle());
 	    
+	}
+	
+	@Given("User enter user name as standard_users")
+	public void userEnterUserNameAsStandard_users() {
+		driver.findElement(By.xpath("//input[@id='user-name']")).sendKeys("standard_users");
+	}
+
+	@Given("User enter password as secret_auce")
+	public void userEnterPasswordAsSecret_auce() {
+		driver.findElement(By.xpath("//input[@id = 'password']")).sendKeys("secret_auce");
+	}
+
+	@But("Login should not be success")
+	public void loginShouldNotBeSuccess() {
+		String text = driver.findElement(By.xpath("//h3[contains(text(),'Epic sadface: Username and password do not match a')]")).getText();
+		Assert.assertEquals(text.trim(), "Epic sadface: Username and password do not match any user in this service");
 	}
 }
