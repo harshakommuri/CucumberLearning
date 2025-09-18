@@ -24,15 +24,15 @@ public class LoginSteps {
 //	    driver.findElement(By.xpath("//span[normalize-space() = 'Login']")).click();
 //	}
 
-	@Given("User enter user name as standard_user")
-	public void userEnterUserNameAsOrtoni() {
-	    driver.findElement(By.xpath("//input[@id='user-name']")).sendKeys("standard_user");
-	}
-
-	@Given("User enter password as secret_sauce")
-	public void userEnterPasswordAsPass() {
-	    driver.findElement(By.xpath("//input[@id = 'password']")).sendKeys("secret_sauce");
-	}
+//	@Given("User enter user name as standard_user")
+//	public void userEnterUserNameAsOrtoni() {
+//	    driver.findElement(By.xpath("//input[@id='user-name']")).sendKeys("standard_user");
+//	}
+//
+//	@Given("User enter password as secret_sauce")
+//	public void userEnterPasswordAsPass() {
+//	    driver.findElement(By.xpath("//input[@id = 'password']")).sendKeys("secret_sauce");
+//	}
 
 	@When("User click on login button")
 	public void userClickOnLoginButton() {
@@ -43,22 +43,35 @@ public class LoginSteps {
 	public void loginShouldBeSuccess() {
 		System.out.println("Logged in successfully");
 		System.out.println(driver.getTitle());
+		driver.quit();
 	    
 	}
 	
-	@Given("User enter user name as standard_users")
-	public void userEnterUserNameAsStandard_users() {
-		driver.findElement(By.xpath("//input[@id='user-name']")).sendKeys("standard_users");
-	}
-
-	@Given("User enter password as secret_auce")
-	public void userEnterPasswordAsSecret_auce() {
-		driver.findElement(By.xpath("//input[@id = 'password']")).sendKeys("secret_auce");
-	}
+//	@Given("User enter user name as standard_users")
+//	public void userEnterUserNameAsStandard_users() {
+//		driver.findElement(By.xpath("//input[@id='user-name']")).sendKeys("standard_users");
+//	}
+//
+//	@Given("User enter password as secret_auce")
+//	public void userEnterPasswordAsSecret_auce() {
+//		driver.findElement(By.xpath("//input[@id = 'password']")).sendKeys("secret_auce");
+//	}
 
 	@But("Login should not be success")
 	public void loginShouldNotBeSuccess() {
 		String text = driver.findElement(By.xpath("//h3[contains(text(),'Epic sadface: Username and password do not match a')]")).getText();
 		Assert.assertEquals(text.trim(), "Epic sadface: Username and password do not match any user in this service");
+		driver.quit();
 	}
+	
+	@Given("User enter user name as {string}")
+	public void userEnterUserNameAs(String username) {
+		driver.findElement(By.xpath("//input[@id='user-name']")).sendKeys(username);
+	}
+
+	@Given("User enter password as {string}")
+	public void userEnterPasswordAs(String password) {
+		driver.findElement(By.xpath("//input[@id = 'password']")).sendKeys(password);
+	}
+	
 }

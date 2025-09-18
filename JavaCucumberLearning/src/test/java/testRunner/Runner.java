@@ -7,7 +7,7 @@ import cucumber.api.SnippetType;
 
 @CucumberOptions(
 		features = {"src/test/java/features"},
-		dryRun = false,  // Only check for mapping of steps to step definitions, don't run tests
+		dryRun = !true,  // Only check for mapping of steps to step definitions, don't run tests
 		snippets = SnippetType.CAMELCASE, //This sets the snippet style to camelCase
 		glue = {"steps"},      // Adjust this to match your step definitions package
 		monochrome = true //for Cleaner console output
